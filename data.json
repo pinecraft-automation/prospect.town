@@ -1,0 +1,8 @@
+{
+  "spots_remaining": 18,
+  "spots_total": 20,
+  "claimed": [
+    { "name": "Alpha AI" },
+    { "name": "BotBuilders" }
+  ]
+}

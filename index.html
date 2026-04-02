@@ -332,12 +332,11 @@ document.getElementById('claimForm').addEventListener('submit',async function(e)
     const el=document.getElementById('spotsCount');
     const n=parseInt(el.textContent);
     if(n>1)el.textContent=n-1;
-    try{localStorage.setItem('prospect_claimed','1')}catch(e){}
   }catch(err){alert('Something went wrong. Try again or email admin@prospect.town')}
 });
 
-// Persist spots
-(function(){try{if(localStorage.getItem('prospect_claimed')){const el=document.getElementById('spotsCount');const n=parseInt(el.textContent);if(n>1)el.textContent=n-1}}catch(e){}})();
+// Load real spots from data.json
+(function(){fetch('/data.json?v='+Date.now()).then(r=>r.json()).then(d=>{const el=document.getElementById('spotsCount');if(el&&typeof d.spots_remaining==='number')el.textContent=d.spots_remaining}).catch(()=>{})})();
 </script>
 </body>
 </html>
